@@ -1,0 +1,53 @@
+<div class="product">
+    <div>
+        <img [src]="product.img" alt="Product image" class="image">
+    </div>
+    
+    <div class="product-descr">
+        <h3>
+            <a [title]="product.name + ' details'" [routerLink]="[product.id]">
+                {{ product.name }}
+            </a>
+        </h3>
+
+        <div class="product-rating-wrapper">
+            <div 
+                *ngFor="let _ of [].constructor(product.rating); let i = index" 
+                class="material-icons product-rating filled"
+            >
+                star
+            </div>
+            <div 
+                *ngFor="let _ of [].constructor(5 - product.rating); let i = index" 
+                class="material-icons product-rating"
+            >
+                star_border
+            </div>
+        </div>
+        
+        <div class="product-bottom">
+            <p *ngIf="product.price" class="price">
+                {{ (product.price).toLocaleString("ru") }} ₸
+            </p>
+
+            <div class="product-icons">
+                <div [ngClass]="{'icon': true, 'icon-like': true, 'liked': liked}" (click)="onLike()">
+                    <i class="material-icons">
+                        {{liked ? "favorite" : "favorite_border"}}
+                    </i>
+                    <span>
+                        {{ liked ? product.like + 1 : product.like }}
+                    </span>
+                </div>
+                <a href="https://t.me/share/url\\?url={{product.url}}&text={{product.name}}" target="_blank">
+                    <div class="icon icon-send">
+                        <i class="material-icons">send</i>
+                    </div>
+                </a>
+                <div class="icon icon-delete" (click)="removeItem.emit()">
+                    <i class="material-icons">delete</i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

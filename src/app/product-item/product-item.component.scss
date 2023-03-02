@@ -1,0 +1,101 @@
+.image {
+    max-width: 280px;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product {
+    padding: 20px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.2s ease;
+    border: 1px solid transparent;
+
+    &-rating {
+        font-size: 20px;
+        color: #d27619;
+        &-wrapper {
+            margin-top: 10px;
+        }
+    }
+
+    &-bottom, &-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-icons {
+        gap: 10px;
+    }
+
+    &-descr {
+        text-align: left;
+    }
+
+    &:hover {
+        box-shadow: 0 10px 20px rgba(103, 103, 103, 0.1);
+        transform: scale(1.02);
+    }
+}
+
+.icon {
+    --color: #1976d2;
+    --transform: none;
+    height: 35px;
+    min-width: 35px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    transition: 0.2s ease;
+    i, span {
+        transition: 0.2s ease;
+        font-size: 20px;
+    }
+    &:hover {
+        background-color: var(--color);
+        i {
+            color: #fff;
+            transform: var(--transform);
+        }
+        span {
+            color: #fff;
+        }
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &-like {
+        min-width: 70px;
+        padding: 0 5px;
+        &.liked {
+            background-color: #d27619;
+            i, span {
+                color: #fff;
+            }
+        }
+        --color: #ff9021;
+        --transform: scale(1.2);
+    }
+
+    &-send {
+        --transform: translate(4px);
+    }
+
+    &-delete {
+        --color: #a10000;
+    }
+}

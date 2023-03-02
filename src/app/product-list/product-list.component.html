@@ -1,28 +1,13 @@
-<h2>Products</h2>
+<div class="breadcrumb">
+  <a routerLink="/" class="button back">
+    <i class="material-icons">arrow_back</i>
+    Back
+  </a>
+  <h2>{{ category?.name }}</h2>
+</div>
 
 <div class="products">
-  <div *ngFor="let product of products" class="product-wrapper">
-  
-    <img [src]="product.img" alt="Product image" class="image">
-
-    <h3>
-        <a
-            [title]="product.name + ' details'"
-        >
-            {{ product.name }}
-        </a>
-    </h3>
-    
-    <p *ngIf="product.price" class="price">
-      {{ product.price }} ₸
-    </p>
-  
-    <button type="button" (click)="share(product.name, product.url)">
-      Share
-    </button>
-    <a class="button ml10" [href]="product.url" target="_blank">
-      Kaspi
-    </a>
-  
+  <div *ngFor="let product of category?.products">
+    <product-item [product]="product" (removeItem)="removeItem(product.id)"></product-item>
   </div>
 </div>
