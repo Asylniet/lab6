@@ -2,38 +2,42 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { CategoryListComponent } from './category-list/category-list.component';
-import { ProductComponent } from './product-item/product-item.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { AlbumsComponent } from './albums/albums.component';
+import { PhotosComponent } from './photos/photos.component';
+import { AlbumDetailComponent } from './album-detail/album-detail.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([
-      { 
-        path: 'category/:categoryName', 
-        component: ProductListComponent,
-      },
-      { path: 'category/:categoryName/:id', component: ProductDetailsComponent },
-      { path: '', component: CategoryListComponent },
-      { path: '**', component: CategoryListComponent },
-    ])
-  ],
   declarations: [
     AppComponent,
     TopBarComponent,
-    ProductListComponent,
-    ProductDetailsComponent,
-    CategoryListComponent,
-    ProductComponent
+    HomeComponent,
+    AboutComponent,
+    AlbumsComponent,
+    PhotosComponent,
+    AlbumDetailComponent
   ],
-  bootstrap: [
-    AppComponent
-  ]
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    RouterModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent},
+      { path: 'about', component: AboutComponent },
+      { path: 'albums', component: AlbumsComponent },
+      { path: 'albums/:id', component: AlbumDetailComponent },
+      { path: 'albums/:id/photos', component: PhotosComponent },
+    ])
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
